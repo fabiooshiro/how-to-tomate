@@ -8,7 +8,6 @@ class UrlMappings {
 		}
 
 		"/"(view:"/index")
-		"/runner"(view:"/runner")
 		"500"(view:'/error')
 
 	}
