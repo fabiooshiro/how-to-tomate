@@ -1,4 +1,5 @@
-    // this is a jasmine test
+
+	// isso eh um teste
 	describe("How to", function() {
 		
 		it("create a book", function() {
@@ -13,7 +14,7 @@
 					expect($('title').text()).toBe("Criar Book");
 
 					// Fill fields
-					$('#name').val("my book");
+					$('#name').val("my book 2");
 
 					// submit the form
 					$('#create').click();
@@ -68,7 +69,7 @@
 			runs(function(){
 				cabral.navigateTo('/book/list', function($){
 					var aLs = $('a').filter(function(){
-						return $(this).text() == 'my book';
+						return $(this).text() == 'my book 2';
 					});
 
 					console.log("clicando no link");
@@ -97,3 +98,5 @@
 		});
 	});
 	
+	
+

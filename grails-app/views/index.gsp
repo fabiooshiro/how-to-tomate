@@ -6,7 +6,7 @@
 	<meta name="layout" content="main">	
 	<script type="text/javascript">
 		function openTomate(){
-			window.open('tomate', 'page','toolbar=no,location=no,status=no,menubar=yes,scrollbars=no,resizable=no,width=400,height=500');  
+			window.open('tomate', 'page','toolbar=no,location=no,status=no,menubar=yes,scrollbars=no,resizable=no,width=700,height=500');  
 		}
 	</script>
 </head>
