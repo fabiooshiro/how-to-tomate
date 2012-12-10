@@ -1,5 +1,6 @@
-    // this is a jasmine test
-	describe("A book", function() {
+
+	// isso eh um teste
+	describe("How to", function() {
 		
 		it("create a book", function() {
 			var done = false;
@@ -62,13 +63,49 @@
 		    });
 		});
 
+        it("edit a book", function(){
+            var done = false;
+    		var jquery, matches;
+			runs(function(){
+				cabral.navigateTo('/book/list', function($){
+                    var aLs = $('a').filter(function(){
+						return $(this).text() == 'my book';
+					});
+
+					console.log("clicando no link");
+					cabral.clickLink(aLs[0]);
+
+					cabral.waitFor(/\/book\/show\/(.*)/g, function($, m){
+                        cabral.clickLink($('.edit')[0]);
+                        cabral.waitFor(/\/book\/edit\/(.*)/g, function($, m){
+                            $('#name').val('meu livro');
+                            $('.save').click();
+                            cabral.waitFor(/\/book\/show\/(.*)/g, function($, m){
+                                done = true;
+                                jquery = $;
+                            });
+                        });
+					});
+				});
+			});
+            
+            waitsFor(function() {
+    	      	return done;
+		    }, "The Value should be incremented", 3000);
+            
+            // finally execute the end verification
+    	    runs(function(){
+		    	expect(jquery('title').text()).toBe("Ver Book");
+		    });
+        });
+        
 		it("delete a book", function(){
 			var done = false;
 			var jquery, matches;
 			runs(function(){
 				cabral.navigateTo('/book/list', function($){
 					var aLs = $('a').filter(function(){
-						return $(this).text() == 'my book';
+						return $(this).text() == 'meu livro';
 					});
 
 					console.log("clicando no link");
@@ -92,8 +129,11 @@
 		    // finally execute the end verification
 		    runs(function(){
 		    	expect(jquery('title').text()).toBe("Book Listagem");
-		    	expect(jquery('.message').text()).toBe("Book " + matches[1] + " removido");
+                var bookId = matches[1].replace(/[^,\d-]*/g,'');
+		    	expect(jquery('.message').text()).toBe("Book " + bookId + " removido");
 		    });
 		});
 	});
 	
+	
+

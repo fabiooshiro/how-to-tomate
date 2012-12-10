@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-	<title>introduction.js</title>
+	<title>how-to-tomate</title>
 	<meta name="layout" content="main">	
 	<script type="text/javascript">
 		function openTomate(){
@@ -11,6 +11,6 @@
 	</script>
 </head>
 <body>
-	<a href="javascript: openTomate();" >Tomate </a>
+	<a href="javascript: openTomate();" id="tomateIDE" >Tomate </a>
 </body>
 </html>
