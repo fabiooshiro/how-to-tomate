@@ -40,6 +40,7 @@
 		    	expect(
 		    		jquery('.message').text()
 		    	).toBe('Book ' + matches[1] + ' criado');
+		    	console.log("create a book: " + (jquery('.message').text() == 'Book ' + matches[1] + ' criado'));
 		    });
 		});
 
@@ -60,6 +61,7 @@
 		    // finally execute the end verification
 		    runs(function(){
 		    	expect(jquery('title').text()).toBe("Book Listagem");
+		    	console.log("list books: " + (jquery('title').text() == "Book Listagem"));
 		    });
 		});
 
@@ -72,7 +74,6 @@
 						return $(this).text() == 'my book';
 					});
 
-					console.log("clicando no link");
 					cabral.clickLink(aLs[0]);
 
 					cabral.waitFor(/\/book\/show\/(.*)/g, function($, m){
@@ -96,6 +97,7 @@
             // finally execute the end verification
     	    runs(function(){
 		    	expect(jquery('title').text()).toBe("Ver Book");
+		    	console.log("edig book: " + (jquery('title').text() == "Ver Book"));
 		    });
         });
         
@@ -108,7 +110,6 @@
 						return $(this).text() == 'meu livro';
 					});
 
-					console.log("clicando no link");
 					cabral.clickLink(aLs[0]);
 
 					cabral.waitFor(/\/book\/show\/(.*)/g, function($, m){
@@ -131,6 +132,7 @@
 		    	expect(jquery('title').text()).toBe("Book Listagem");
                 var bookId = matches[1].replace(/[^,\d-]*/g,'');
 		    	expect(jquery('.message').text()).toBe("Book " + bookId + " removido");
+		    	console.log("delete book: " + (jquery('.message').text() == "Book " + bookId + " removido"));
 		    });
 		});
 	});

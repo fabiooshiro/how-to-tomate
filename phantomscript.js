@@ -1,4 +1,9 @@
 var page = require('webpage').create();
+
+page.onConsoleMessage = function (msg) {
+    console.log('User msg: ' + msg);
+};
+
 var fileName = 'bruno.js';
 console.log("Starting test");
 window.setInterval(function(){
@@ -25,6 +30,10 @@ window.setInterval(function(){
                 return $('#details').text();
             });
             console.log("Fail...");
+            var fs = require('fs');
+            var f = fs.open('htmlcode.txt', "w");
+            f.write(page.content);
+            f.close();  
             console.log(txtError);
             phantom.exit(1);
         }
@@ -32,6 +41,6 @@ window.setInterval(function(){
 }, 500);
 
 page.open('http://localhost:8080/how-to-tomate/tomate/runner?fileName=' + fileName, function () {
-    console.log("running some navigation ...");
+    //console.log("running some navigation ...");
 });
 
