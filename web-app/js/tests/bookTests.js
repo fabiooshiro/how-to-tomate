@@ -36,9 +36,10 @@
 
 			// finally execute the end verification
 		    runs(function(){
+		    	var bookId = matches[1].replace(/[^,\d-]*/g,'');
 		    	expect(
 		    		jquery('.message').text()
-		    	).toBe('Book ' + matches[1] + ' criado');
+		    	).toBe('Book ' + bookId + ' criado');
 		    });
 		});
 
@@ -91,8 +92,9 @@
 
 		    // finally execute the end verification
 		    runs(function(){
+		    	var bookId = matches[1].replace(/[^,\d-]*/g,'');
 		    	expect(jquery('title').text()).toBe("Book Listagem");
-		    	expect(jquery('.message').text()).toBe("Book " + matches[1] + " removido");
+		    	expect(jquery('.message').text()).toBe("Book " + bookId + " removido");
 		    });
 		});
 	});

@@ -131,8 +131,8 @@
 		    runs(function(){
 		    	expect(jquery('title').text()).toBe("Book Listagem");
                 var bookId = matches[1].replace(/[^,\d-]*/g,'');
-		    	expect(jquery('.message').text()).toBe("X Book " + bookId + " removido");
-		    	console.log("delete book: " + (jquery('.message').text() == "X Book " + bookId + " removido"));
+		    	expect(jquery('.message').text()).toBe("Book " + bookId + " removido");
+		    	console.log("delete book: " + (jquery('.message').text() == "Book " + bookId + " removido"));
 		    });
 		});
 	});
