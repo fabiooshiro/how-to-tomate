@@ -1,6 +1,7 @@
-
-	// isso eh um teste
-	describe("How to", function() {
+    var unique = 'test 1';
+    // this is a jasmine test
+    
+	describe("A book", function() {
 		
 		it("create a book", function() {
 			var done = false;
@@ -14,7 +15,7 @@
 					expect($('title').text()).toBe("Criar Book");
 
 					// Fill fields
-					$('#name').val("my book");
+					$('#name').val("my book " + unique);
 
 					// submit the form
 					$('#create').click();
@@ -37,10 +38,10 @@
 
 			// finally execute the end verification
 		    runs(function(){
+		    	var bookId = matches[1].replace(/[^,\d-]*/g,'');
 		    	expect(
 		    		jquery('.message').text()
-		    	).toBe('Book ' + matches[1] + ' criado');
-		    	console.log("create a book: " + (jquery('.message').text() == 'Book ' + matches[1] + ' criado'));
+		    	).toBe('Book ' + bookId + ' criado');
 		    });
 		});
 
@@ -61,55 +62,21 @@
 		    // finally execute the end verification
 		    runs(function(){
 		    	expect(jquery('title').text()).toBe("Book Listagem");
-		    	console.log("list books: " + (jquery('title').text() == "Book Listagem"));
 		    });
 		});
 
-        it("edit a book", function(){
-            var done = false;
-    		var jquery, matches;
-			runs(function(){
-				cabral.navigateTo('/book/list', function($){
-                    var aLs = $('a').filter(function(){
-						return $(this).text() == 'my book';
-					});
-
-					cabral.clickLink(aLs[0]);
-
-					cabral.waitFor(/\/book\/show\/(.*)/g, function($, m){
-                        cabral.clickLink($('.edit')[0]);
-                        cabral.waitFor(/\/book\/edit\/(.*)/g, function($, m){
-                            $('#name').val('meu livro');
-                            $('.save').click();
-                            cabral.waitFor(/\/book\/show\/(.*)/g, function($, m){
-                                done = true;
-                                jquery = $;
-                            });
-                        });
-					});
-				});
-			});
-            
-            waitsFor(function() {
-    	      	return done;
-		    }, "The Value should be incremented", 3000);
-            
-            // finally execute the end verification
-    	    runs(function(){
-		    	expect(jquery('title').text()).toBe("Ver Book");
-		    	console.log("edit book: " + (jquery('title').text() == "x Ver Book"));
-		    });
-        });
-        
 		it("delete a book", function(){
 			var done = false;
 			var jquery, matches;
 			runs(function(){
 				cabral.navigateTo('/book/list', function($){
 					var aLs = $('a').filter(function(){
-						return $(this).text() == 'meu livro';
+                        var res = $(this).text() == ("my book " + unique);
+                        console.log("a = " + res + "link '" + $(this).text() + "' " + ("my book " + unique));
+						return res;
 					});
 
+					console.log("clicando no link " + aLs.length);
 					cabral.clickLink(aLs[0]);
 
 					cabral.waitFor(/\/book\/show\/(.*)/g, function($, m){
@@ -129,13 +96,10 @@
 
 		    // finally execute the end verification
 		    runs(function(){
+		    	var bookId = matches[1].replace(/[^,\d-]*/g,'');
 		    	expect(jquery('title').text()).toBe("Book Listagem");
-                var bookId = matches[1].replace(/[^,\d-]*/g,'');
 		    	expect(jquery('.message').text()).toBe("Book " + bookId + " removido");
-		    	console.log("delete book: " + (jquery('.message').text() == "Book " + bookId + " removido"));
 		    });
 		});
 	});
 	
-	
-

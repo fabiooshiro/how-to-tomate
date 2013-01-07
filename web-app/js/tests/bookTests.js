@@ -1,4 +1,6 @@
+    var unique = 'test 0';
     // this is a jasmine test
+    
 	describe("A book", function() {
 		
 		it("create a book", function() {
@@ -13,7 +15,7 @@
 					expect($('title').text()).toBe("Criar Book");
 
 					// Fill fields
-					$('#name').val("my book");
+					$('#name').val("my book " + unique);
 
 					// submit the form
 					$('#create').click();
@@ -69,10 +71,12 @@
 			runs(function(){
 				cabral.navigateTo('/book/list', function($){
 					var aLs = $('a').filter(function(){
-						return $(this).text() == 'my book';
+                        var res = $(this).text() == ("my book " + unique);
+                        console.log("a = " + res + "link '" + $(this).text() + "' " + ("my book " + unique));
+						return res;
 					});
 
-					console.log("clicando no link");
+					console.log("clicando no link " + aLs.length);
 					cabral.clickLink(aLs[0]);
 
 					cabral.waitFor(/\/book\/show\/(.*)/g, function($, m){
