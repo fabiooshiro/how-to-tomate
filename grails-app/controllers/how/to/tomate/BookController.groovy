@@ -99,4 +99,21 @@ class BookController {
             redirect(action: "show", id: id)
         }
     }
+
+    def upload(){
+        
+    }
+
+    def uploaded(){
+        def fileContents = ""
+        def f = request.getFile('myFile')
+        if(f){
+            File temp = File.createTempFile("file", ".tmp");
+            f.transferTo(temp)
+            temp.eachLine{
+                fileContents += ">> ${it}"
+            }
+        }
+        [fileContents: fileContents]
+    }
 }
