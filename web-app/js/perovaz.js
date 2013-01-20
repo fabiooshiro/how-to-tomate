@@ -10,7 +10,7 @@
     <failure message="Assertion failed: &#xa;&#xa;assert Discrepancy.findAll().size() == 0&#xa;                   |         |      |&#xa;                   |         1      false&#xa;                   [Criar venda de ALLL3 value: 2200.0000000000]&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Assertion failed: 
 
 assert Discrepancy.findAll().size() == 0
-                   |         |      |
+                   |         |      |sss
                    |         1      false
                    [Criar venda de ALLL3 value: 2200.0000000000]
 
@@ -37,8 +37,7 @@ AHHHHHHHHHHHHHHHHHH
 
 var Perovaz = function(){
 
-    this.write = function(report){
-      
+    this.write = function(report){p
       var source = $('#report-template').html();
       var template = Handlebars.compile(source);
       return template(report);
