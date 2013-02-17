@@ -62,6 +62,9 @@ grails.hibernate.cache.queries = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+
+        // the default dir is <app>/test/resources
+        tomate.filesdir = new File('./test/resources2')
     }
     production {
         grails.logging.jul.usebridge = false
