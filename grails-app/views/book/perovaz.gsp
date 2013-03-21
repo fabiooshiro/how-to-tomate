@@ -9,15 +9,22 @@
 		<r:require modules="perovaz, tomate , handlebars" />
 		<style type="text/css">
 			div.container-result{
-				overflow:hidden;
 				width:100%;
 				position: relative;
 				border-style: solid;
 				border-width: 1px;
 				background: rgba(23,232,79,0.3);
 			}
-			pre #result,#generated{
-				overflow: hidden;
+			div, #result, #generated{
+				overflow: auto;
+			}
+			legend{
+				border-style: solid;
+				border-width: 1px;
+				border-radius: 20px;
+				background:rgba(150,100,220,0.8);
+				width: 100%;
+				text-align: center;	
 			}
 		</style>
 	</head>
@@ -25,7 +32,7 @@
 		<div class="container-result">
 			<p>
 				<legend>Expected</legend>
-				<pre id="result01">&lt;?xml version="1.0" encoding="UTF-8" ?>
+				<div id="result01">&lt;?xml version="1.0" encoding="UTF-8" ?>
 					&lt;testsuite errors="0" failures="0" hostname="Brunos-MacBook-Air.local" name="br.com.investtools.funds.FixedIncomeReconcileServiceTests" tests="1" time="4.269" timestamp="2013-01-15T22:11:49">
 						
 							&lt;testcase classname="test_bradesco_foda" name="blabla" time="2.988" > &lt;/testcase>
@@ -33,11 +40,11 @@
 							&lt;testcase classname="test_fixed_income_foda" name="gluglu" time="2.988" > &lt;/testcase>
 						
 					&lt;/testsuite>
-				</pre>
+				</div>
 			</p>
 			<p>
 				<legend>To Be</legend>
-				<pre id="generated"></pre>
+				<div id="generated"></div>
 			</p>
 		</div>
 		<script type="text/javascript">
