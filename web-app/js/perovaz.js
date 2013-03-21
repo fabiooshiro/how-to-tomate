@@ -37,10 +37,10 @@ AHHHHHHHHHHHHHHHHHH
 
 var Perovaz = function(){
 
-    this.write = function(report){p
+    this.write = function(report){
       var source = $('#report-template').html();
+      console.log(report.testcases.length);
       var template = Handlebars.compile(source);
       return template(report);
     };
-
 }
